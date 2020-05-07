@@ -48,12 +48,15 @@ router.route("/gameCards")
 router.route("/users")
   .get(UserController.findUsers)
   .post(UserController.addUser)
+  .put(UserController.changeAvatar)
 
 router.route("/users/:id")
   .get(UserController.findById)
+  
 
 router.route("/user")
   .get(UserController.findById)
+  
 
 router.route("/userDecks")
    .get(UserController.findUserDecks)

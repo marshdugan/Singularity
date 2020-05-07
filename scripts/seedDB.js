@@ -146,8 +146,8 @@ const gameCardSeed = [
     HP: 5,
     type: 'Unit',
     cost: 2,
-    class: 'Tech'
-    //defend only, damage on death
+    class: 'Tech',
+    mechanic: 'defend only, damage on death'
   }, {
     name: "Wards",
     image: "wards.jpg",
@@ -155,8 +155,8 @@ const gameCardSeed = [
     HP: 5,
     type: 'Unit',
     cost: 2,
-    class: 'Arcane'
-    // defend only. damage on death
+    class: 'Arcane',
+    mechanic: 'defend only. damage on death'
   }, {
     name: "Merc",
     image: "merc.jpg",
@@ -172,8 +172,8 @@ const gameCardSeed = [
     HP: 1,
     type: 'Unit',
     cost: 3,
-    class: 'Arcane'
-    // Summons 1/1 unit every turn
+    class: 'Arcane',
+    mechanics: 'Summons 1/1 unit every turn'
   }, {
     name: "Developer",
     image: "developer.jpg",
@@ -181,25 +181,26 @@ const gameCardSeed = [
     HP: 1,
     type: 'Unit',
     cost: 3,
-    class: 'Tech'
-    //summons 1/1
+    class: 'Tech',
+    mechanics: 'summons 1/1'
   }, {
-    name: "unstable familiar",
+    name: "Unstable Familiar",
     image: "unstablefamiliar.jpg",
     attack: 4,
     HP: 1,
     type: 'Unit',
     cost: 2,
-    class: 'Arcane'
-    //lasts 1 turn
+    class: 'Arcane',
+    mechanics: 'lasts 1 turn'
   }, {
-    name: "vaporware",
+    name: "Vaporware",
     image: "vaporware.jpg",
     attack: 4,
     HP: 1,
     type: 'Unit',
     cost: 2,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'lasts 1 turn'
     //lasts 1 turn
   }, {
     name: "Turret",
@@ -208,21 +209,24 @@ const gameCardSeed = [
     HP: 1,
     type: 'Unit',
     cost: 3,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'Defender'
     //can only defend
   }, {
     name: "Cancel",
     image: "cancel.jpg",
     type: 'Spell',
     cost: 2,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'counter'
     //counter magic, cost 2
   }, {
     name: "Stall",
     image: "delay.jpg",
     type: 'Spell',
     cost: 2,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'counter'
     //counter tech, cost 2
 
   }, {
@@ -231,14 +235,15 @@ const gameCardSeed = [
     //Magic Spell cost 1, 1 dmg   
     type: 'Spell',
     cost: 1,
-    class: 'Arcane'
-
+    class: 'Arcane',
+    mechanics: ' 1 dmg '
   }, {
     name: "Static",
     image: "static.jpg",
     type: 'Spell',
     cost: 1,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: '1 dmg'
     //Tech spell cost 1, 1 dmg
 
   }, {
@@ -246,7 +251,8 @@ const gameCardSeed = [
     image: "fireball.jpg",
     type: 'Spell',
     cost: 3,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: '2 dmg to all'
     //Magic spell cost 3, 2 dmg to all
 
   }, {
@@ -254,14 +260,16 @@ const gameCardSeed = [
     image: "heal.jpg",
     type: 'Spell',
     cost: 2,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'cost 2'
     // Magic spell, cost 2, heal 5
 
   }, {
     name: "Scry",
     image: "scry.jpg",
     type: 'Spell',
-    cost: 1
+    cost: 1,
+    mechanics: "look at X opponent's cards"
     //Magic spell, look at X opponent's cards, cost 1+x 
 
   }, {
@@ -269,7 +277,8 @@ const gameCardSeed = [
     image: "hack.jpg",
     type: 'Spell',
     cost: 4,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: "look at opponent's hand"
     //Tech spell, look at opponent's hand, cost 4
 
   }, {
@@ -277,7 +286,8 @@ const gameCardSeed = [
     image: "resummon.jpg",
     type: 'Spell',
     cost: 2,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'unit out of discard, cost 2+unit cost'
     // magic spell, unit out of discard, cost 2+unit cost
 
   }, {
@@ -285,7 +295,8 @@ const gameCardSeed = [
     image: "interference.jpg",
     type: 'Spell',
     cost: 1,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'raises cost of magic by 1 for 1 round'
     // Tech spell, raises cost of magic by 1 for 1 round
 
   }, {
@@ -293,7 +304,8 @@ const gameCardSeed = [
     image: "teleport.jpg",
     type: 'Spell',
     cost: 1,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: "remove unit to owner's hand"
     // Tech power, remove unit to owner's and, cost 1
 
   }, {
@@ -301,7 +313,8 @@ const gameCardSeed = [
     image: "whirlwind.jpg",
     type: 'Spell',
     cost: 4,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: "return random number of units to owner's hand"
     //Magic spell, return random number of units to owner's hand, cost 4
 
   }, {
@@ -309,7 +322,8 @@ const gameCardSeed = [
     image: "sword.jpg",
     type: 'Equipment',
     cost: 2,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: '+1 attack'
     //equipment, +1 attack, cost 2
 
   }, {
@@ -317,7 +331,8 @@ const gameCardSeed = [
     image: "shield.png",
     type: 'Equipment',
     cost: 2,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: '+1 hp'
     //equipment, +1 hp, cost 2
 
   }, {
@@ -325,7 +340,8 @@ const gameCardSeed = [
     image: "rifle.jpg",
     type: 'Equipment',
     cost: 3,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: '+2 attack'
     //equipment +2 attack, cost 3
 
   }, {
@@ -333,7 +349,8 @@ const gameCardSeed = [
     image: "pistol.jpg",
     type: 'Equipment',
     cost: 3,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: '+1 attack'
     //equipment +1 attack, cost 2
 
   }, {
@@ -341,7 +358,8 @@ const gameCardSeed = [
     image: "medpack.jpg",
     type: 'Equipment',
     cost: 4,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'equipment +2hp'
     //equipment +2hp, cost 4
 
   }, {
@@ -349,7 +367,8 @@ const gameCardSeed = [
     image: "healthpotion.jpg",
     type: 'Equipment',
     cost: 4,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'equipment +2hp'
     //equipment +2hp, cost 4
 
   }, {
@@ -357,7 +376,8 @@ const gameCardSeed = [
     image: "staff.jpg",
     type: 'Equipment',
     cost: 4,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'equipment +1 hp +1 attack'
     //equipment +1 hp +1 attack, +2hp vs magic, cost 4
 
   }, {
@@ -365,7 +385,8 @@ const gameCardSeed = [
     image: "datapad.png",
     type: 'Equipment',
     cost: 5,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'equipment reduce cost of tech spells by 1'
     // equipment reduce cost of tech spells by 1, cost 5
 
   }, {
@@ -373,7 +394,8 @@ const gameCardSeed = [
     image: "totem.jpg",
     type: 'Equipment',
     cost: 4,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'global equipment, increases magic damage by 1'
     // global equipment, increases magic damage by 1 cost 4
 
   }, {
@@ -381,7 +403,8 @@ const gameCardSeed = [
     image: "adrenal.jpg",
     type: 'Equipment',
     cost: 4,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'global eq, increases tech damage by 1'
     // global eq, increases tech damage by 1 cost 4
 
   }, {
@@ -389,7 +412,8 @@ const gameCardSeed = [
     image: "hideout.jpg",
     type: 'Equipment',
     cost: 6,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'global equipment, protect one unit after combat'
     // global equipment, protect one unit after combat cost cost 6
 
   }, {
@@ -397,7 +421,8 @@ const gameCardSeed = [
     image: "sanctum.jpg",
     type: 'Equipment',
     cost: 6,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'global equipment, protect one unit after combat'
     // global equipment, protect one unit after combat cost 6
 
   }, {
@@ -405,7 +430,8 @@ const gameCardSeed = [
     image: "ambulance.jpg",
     type: 'Equipment',
     cost: 4,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'return one unit to hand after combat'
     // return one unit to hand after combat cost 4
 
   }, {
@@ -413,7 +439,8 @@ const gameCardSeed = [
     image: "illusion.png",
     type: 'Equipment',
     cost: 2,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'swap out a unit for another unit before combat begins'
     // swap out a unit for another unit before combat begins, cost new unit - old unit + 2
 
   }, {
@@ -421,7 +448,8 @@ const gameCardSeed = [
     image: "shieldspell.jpg",
     type: 'Equipment',
     cost: 2,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'protect player after combat'
     // magic, protect player after combat, cost 2
 
   }, {
@@ -429,7 +457,8 @@ const gameCardSeed = [
     image: "mail.jpg",
     type: 'Equipment',
     cost: 4,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'decrease damage to player by 1'
     // decrease damage to player by 1, cost 4
 
   }, {
@@ -437,7 +466,8 @@ const gameCardSeed = [
     image: "bodyarmor.jpg",
     type: 'Equipment',
     cost: 4,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'decrease damage to player by 1'
     // decrease damage to player by 1, cost 4
 
   }, {
@@ -445,7 +475,8 @@ const gameCardSeed = [
     image: "forcefield.jpg",
     type: 'Equipment',
     cost: 2,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'tech protect player after combat'
     // tech protect player after combat, cost 2
 
   }, {
@@ -453,7 +484,8 @@ const gameCardSeed = [
     image: "shortcircuit.jpg",
     type: 'Equipment',
     cost: 4,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'opponent discards 2 cards'
     // opponent discards 2 cards, cost 4
 
   }, {
@@ -461,7 +493,8 @@ const gameCardSeed = [
     image: "massrecall.jpg",
     type: 'Equipment',
     cost: 8,
-    class: 'Arcane'
+    class: 'Arcane',
+    mechanics: 'return all units to hand'
     // return all units to hand, cost 8
 
   }, {
@@ -469,7 +502,8 @@ const gameCardSeed = [
     image: "distraction.jpg",
     type: 'Equipment',
     cost: 3,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'target unable to block this turn'
     // target unable to block this turn, cost 3
 
   }, {
@@ -477,7 +511,8 @@ const gameCardSeed = [
     image: "flashbang.png",
     type: 'Equipment',
     cost: 4,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'arget unable to attack this turn'
     // target unable to attack this turn, cost 4
 
   }, {
@@ -485,7 +520,8 @@ const gameCardSeed = [
     image: "entrench.jpg",
     type: 'Equipment',
     cost: 5,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'units gain 2 defense this turn'
     // units gain 2 defense this turn, cost 5
 
   }, {
@@ -493,7 +529,8 @@ const gameCardSeed = [
     image: "grenade.jpg",
     type: 'Equipment',
     cost: 5,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: '1 damage to all opponent units'
     // 1 damage to all opponent units, cost 5
 
   }, {
@@ -501,44 +538,59 @@ const gameCardSeed = [
     image: "armory.jpg",
     type: 'Equipment',
     cost: 4,
-    class: 'Tech'
+    class: 'Tech',
+    mechanics: 'equipment cards cost 1 less, cost 4'
     // equipment cards cost 1 less, cost 4
   },
-];
-
-const userSeed = [
   {
-    name: "David",
-    password: "1234",
+    name: "Power Core",
+    image: "powerCore.jpg",
+    type: 'Resource',
+    cost: 0,
+    class: 'Tech'
   },
   {
-    name: "John",
-    password: "5678",
+    name: "Soul Stone",
+    image: "soulStone.jpg",
+    type: 'Resource',
+    cost: 0,
+    class: 'Arcane'
   }
 ];
 
-const deckSeed = [
-  {
-    name: "Sample1",
-    numberOfCards: 4,
-    card : ["5e95dde9f9956303a8f0459a"]
-  },
-  {
-    name: "Sample2",
-  }
-];
+// const userSeed = [
+//   {
+//     name: "David",
+//     password: "1234",
+//   },
+//   {
+//     name: "John",
+//     password: "5678",
+//   }
+// ];
 
-db.User
-  .remove()
-  .then(() => db.User.collection.insertMany(userSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+// const deckSeed = [
+//   {
+//     name: "Sample1",
+//     numberOfCards: 4,
+//     card : ["5e95dde9f9956303a8f0459a"]
+//   },
+//   {
+//     name: "Sample2",
+//   }
+// ];
+
+// db.User
+//   .remove()
+//   .then(() => db.User.collection.insertMany(userSeed))
+//   .then(data => {
+//     console.log(data.result.n + " records inserted!");
+//     process.exit(0);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     process.exit(1);
+//   });
 
 db.gameCard
   .remove({})
@@ -552,14 +604,14 @@ db.gameCard
     process.exit(1);
   });
 
-db.Deck
-  .remove()
-  .then(() => db.Deck.collection.insertMany(deckSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+// db.Deck
+  // .remove()
+  // .then(() => db.Deck.collection.insertMany(deckSeed))
+  // .then(data => {
+  //   console.log(data.result.n + " records inserted!");
+  //   process.exit(0);
+  // })
+  // .catch(err => {
+  //   console.error(err);
+  //   process.exit(1);
+  // });

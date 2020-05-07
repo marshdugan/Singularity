@@ -14,14 +14,14 @@ function Search() {
     // const [params, setParams] = useState([['All', 'Unit', 'Spell'], ['All', '1', '2', '3', '4', '5+'], ['10', '20', '30']]);
     // const labels = ['Type', 'Cost', 'Results'];
 
-    const [params, setParams] = useState([['100', '75', '50', '20', '10']]);
-    const labels = ['Results'];
+    // const [params, setParams] = useState([['100', '75', '50', '20', '10']]);
+    // const labels = ['Results'];
 
     const [form, setForm] = useState({
         Search: "",
         // Type: "Unit",
         // Cost: "1",
-        Results: 100
+        // Results: 100
     })
 
     useEffect(() => {
@@ -84,7 +84,7 @@ function Search() {
                         Search <i className="fas fa-search" /></Button>
                     <Button onClick={sortCards} classes='col s2' style={{ marginLeft: "5px" }}>Sort</Button>
                 </div>
-                <div className='row'>
+                {/* <div className='row'>
                     {params.map((arr, index) => (
                         <DropdownMenu
                             key={index}
@@ -96,10 +96,10 @@ function Search() {
                         />
                     ))}
 
-                </div>
+                </div> */}
             </form>
             <div className="row cardArea">
-                {filteredCards.slice(0, parseInt(form.Results)).map(card => (
+                {filteredCards.map(card => (
                     <div className="col s12 m6 l3 cardDiv">
                         <GameCard
                             key={card._id}
@@ -112,6 +112,7 @@ function Search() {
                             HP={card.HP}
                             cardBody={card.cardBody}
                             cost={card.cost}
+                            type={card.type}
                             class={card.class}
                         // onClick={addToDeck}
                         />

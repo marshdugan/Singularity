@@ -2,49 +2,62 @@ import React, { useState, useEffect } from 'react'
 import './style.css'
 import API from "../../utils/API"
 import Deck from "../Deck";
-function UserPageDeck() {
-    const [userData, setUserData] = useState([]);
-    const [deckData, setDeckData] = useState([]);
+function UserPageDeck(props) {
+    // const [userData, setUserData] = useState([]);
+    // const [deckData, setDeckData] = useState([]);
+    const [deckName, setDeckName] = useState("");
+    const [numOfCards, setNumOfCards] = useState("");
+
+    // useEffect(() => {
+    //     API.getOneUser(props.user)
+    //         .then(res => {
+    //             for (let i = 0; i < res.data.deck.length; i++) {
+    //                 console.log('res', res.data.deck[i])
+    //                 setDeckData([...deckData, {
+    //                     name: res.data.deck[i].name,
+    //                     numberOfCards: res.data.deck[i].numberOfCards
+    //                 }])
+    //             }
+    //         })
+    //         .catch(err => console.log(err))
+    // }, [])
+
+    // TEMPORARY, JUST TO GET CARDS TO DISPLAY
 
     useEffect(() => {
-        API.findUserDecks().then(res => {
-            setUserData(res.data[0])
-            //console.log(res.data)
-            for (let i = 0; i < userData.deck.length; i++) {
-                API.findOneDeck(userData.deck).then(result => {
-                    setDeckData(result.data);
-                })
-
-            }
-        }).catch(err => console.log(err))
+        API.getOneUser(props.user)
+            .then(res => {
+                if (res.data.deck[0]) {
+                setDeckName(res.data.deck[0].name)
+                setNumOfCards(res.data.deck[0].numberOfCards)
+                }
+            })
     }, [])
-    const dummyArr =['1243', '1123']
-     
-    // }
 
-    //console.log(userData.deck);
-    console.log(deckData);
-    const deckArr = userData.deck
+    // const dummyArr = ['1243', '1123']
+
+    // console.log("deck", deckData);
+    // const deckArr = userData.deck
 
     return (
         <>
-            <h4>This will display your decks</h4>
-
-
-            <Deck 
+            {/* <Deck 
                 name={userData.name}
                 deck={deckArr}
-            />
+            /> */}
 
             {/* {userData.deck.map(item => (
             <Deck
                 deck = { item }
             />
             ))} */}
+
+            <h5 className="center">Deck name: {deckName}</h5>
+            <h5 className="center">Number of cards: {numOfCards}</h5>
         </>
     )
-        
-              
-      
+
+
+
 }
 export default UserPageDeck;

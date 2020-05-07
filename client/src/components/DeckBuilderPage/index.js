@@ -7,6 +7,7 @@ import GameCard from "../GameCard/index"
 
 function DeckBuilderPage({ handleFormSubmit, userID }) {
     const [user, setUser] = useState("")
+    const [avatar, setAvatar] = useState("")
     const [cards, setCards] = useState([]);
     const [deckCards, setDeckCards] = useState([])
     const [cardIds, setCardIds] = useState([])
@@ -14,10 +15,12 @@ function DeckBuilderPage({ handleFormSubmit, userID }) {
 
     useEffect(() => {
         API.getOneUser(userID)
-        .then(res => {
-            setUser(res.data.name)
-        })
-        .catch(err => console.log(err))
+            .then(res => {
+                console.log('res', res)
+                setUser(res.data.name)
+                setAvatar(res.data.avatar)
+            })
+            .catch(err => console.log(err))
 
         API.getCards()
             .then(res => {
@@ -34,7 +37,11 @@ function DeckBuilderPage({ handleFormSubmit, userID }) {
         let newCardId = e.target.getAttribute('data-id')
         const identicalCards = cardIds.filter(card => card === newCardId)
         if (identicalCards.length > 2) {
-            return alert("You can't add more than 3 of the same card.")
+            for (let i = 0; i < cards.length; i++) {
+                if (cards[i]._id === newCardId && cards[i].type !== "Resource") {
+                    return alert("You can't add more than 3 of the same card unless it's a resource.")
+                }
+            }
         }
 
         setCardIds([...cardIds, newCardId])
@@ -92,7 +99,7 @@ function DeckBuilderPage({ handleFormSubmit, userID }) {
             <div className="row">
                 <div className="col s4">
                     <div className="userInfo">
-                        <img className="profilePic" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/feac120a-4482-4a91-9cee-fce7fbde0dbe/dawwejk-40a4c28d-0e29-49c0-8bea-848ca6b52f71.jpg/v1/fill/w_1024,h_1266,q_75,strp/ashton__c__by_astri_lohne_dawwejk-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI2NiIsInBhdGgiOiJcL2ZcL2ZlYWMxMjBhLTQ0ODItNGE5MS05Y2VlLWZjZTdmYmRlMGRiZVwvZGF3d2Vqay00MGE0YzI4ZC0wZTI5LTQ5YzAtOGJlYS04NDhjYTZiNTJmNzEuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.tuRmJARhtoN9PY1Hmr9HHJoaTQ0J-bly2LMIHVIWj_E" alt="Avatar" />
+                        <img className="profilePic" src={avatar} alt="Avatar" />
                         <h6 className="">{user}</h6>
                         {deckCards.length < 20 ?
                             <>
@@ -106,7 +113,7 @@ function DeckBuilderPage({ handleFormSubmit, userID }) {
                             <>
                                 <div className="col deckEntry">
                                     <h5 style={{ fontWeight: "900" }}>{card}</h5>
-                                    <p data-name={card} onClick={removeCard} className="deleteCard">✖</p>
+                                    <p data-name={card} data-id={card + Math.floor(Math.random() * 100)} onClick={removeCard} className="deleteCard">✖</p>
                                 </div>
                             </>
                         ))}
@@ -117,25 +124,49 @@ function DeckBuilderPage({ handleFormSubmit, userID }) {
                     <div className="sorting">
                         <Button onClick={sortCards} classes='col s2' style={{ marginLeft: "5px", marginTop: "5px" }}>Sort Cards</Button>
                     </div>
+
                     <div className="row cardArea">
-                        {cards && cards.map(card => (
-                            <div className="col s12 m6 l3 cardDiv">
-                                <GameCard
-                                    key={card._id}
-                                    id={card._id}
-                                    data-card={card.name}
-                                    name={card.name}
-                                    image={card.image}
-                                    attack={card.attack}
-                                    defense={card.defense}
-                                    HP={card.HP}
-                                    cardBody={card.cardBody}
-                                    cost={card.cost}
-                                    class={card.class}
-                                    onClick={addToDeck}
-                                />
-                            </div>
-                        ))}
+                        {cards && cards.map(card => {
+                            if (card.type === "Resource")
+                                return <div className="col s12 m6 l3 cardDiv">
+                                    <GameCard
+                                        key={card._id}
+                                        id={card._id}
+                                        data-card={card.name}
+                                        name={card.name}
+                                        image={card.image}
+                                        attack={card.attack}
+                                        defense={card.defense}
+                                        HP={card.HP}
+                                        cardBody={card.cardBody}
+                                        cost={card.cost}
+                                        type={card.type}
+                                        class={card.class}
+                                        onClick={addToDeck}
+                                    />
+                                </div>
+                        })}
+
+                        {cards && cards.map(card => {
+                            if (card.type !== "Resource")
+                                return <div className="col s12 m6 l3 cardDiv">
+                                    <GameCard
+                                        key={card._id}
+                                        id={card._id}
+                                        data-card={card.name}
+                                        name={card.name}
+                                        image={card.image}
+                                        attack={card.attack}
+                                        defense={card.defense}
+                                        HP={card.HP}
+                                        cardBody={card.cardBody}
+                                        cost={card.cost}
+                                        type={card.type}
+                                        class={card.class}
+                                        onClick={addToDeck}
+                                    />
+                                </div>
+                        })}
                     </div>
                 </div>
             </div>

@@ -13,7 +13,6 @@ const deckSchema = new Schema({
       ref: 'gameCard'
     }
   ],
-  
 });
 
 const Deck = mongoose.model("Deck", deckSchema);

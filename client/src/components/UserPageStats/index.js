@@ -6,7 +6,7 @@ import GameCard from "../GameCard/index"
 function UserPageStats() {
     return (
         <>
-            <h4>This will display your stats</h4>
+            <h4 className="center">Coming soon...</h4>
         </>
     )
 }

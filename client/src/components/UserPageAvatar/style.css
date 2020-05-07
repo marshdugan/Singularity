@@ -1,0 +1,11 @@
+.newAvatar:hover {
+    cursor: pointer;
+}
+
+.locked {
+    opacity: 0.6;
+}
+
+.locked:hover {
+    cursor: default;
+}

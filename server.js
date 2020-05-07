@@ -21,7 +21,7 @@ app.use(session({
   secret: process.env.MYSECRET,
   store: new MongoStore({
     url: process.env.MONGODB_URI || "mongodb://" + process.env.DBUSER + ":" + process.env.DBPASS + "@ds129018.mlab.com:29018/heroku_g9r80cft", 
-    ttl: 14 * 24 *60  * 60, }),
+    ttl: 14 * 24 * 60  * 60, }),
   resave: false,
   saveUninitialized: false,
 

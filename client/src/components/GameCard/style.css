@@ -2,13 +2,13 @@
     display: flex !important;
     flex-direction: row-reverse !important;
 } */
-.gameCard{
+/* .gameCard{
     cursor: pointer;
     width: 90%;
    height: 40vh;
     background-image: url('../assets/images/techBack.jfif');
     background-size: contain;
-}
+} */
 
 .template {
     z-index: 0;

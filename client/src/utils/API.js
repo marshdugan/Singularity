@@ -14,6 +14,10 @@ export default {
     return axios.get("/api/gameCards/");
   },
 
+  getOneCard: id => {
+    return axios.get("/api/gameCards/" + id);
+  },
+
   //User
   getUsers: () => {
     return axios.get("/api/users");
@@ -21,6 +25,10 @@ export default {
 
   getOneUser: id => {
     return axios.get("/api/users/" + id)
+  },
+
+  changeAvatar: obj => {
+    return axios.put("/api/users", obj)
   },
 
   addUser: user => {

@@ -48,7 +48,6 @@ function GamePlay(props) {
                 API.getOneDeck(res.data.deck[0]._id)
                     .then(res => {
                         console.log(res);
-                                        
                         var startHand = [];
                         for (let i = 0; i < handSize; i++) {
                             startHand.push(res.data.card[i]);
